@@ -61,56 +61,68 @@ class _PageGridOrientationState extends State<PageGridOrientation> {
         appBar: AppBar(
           title: Text("List Grid Orientation"),
         ),
-        body: ListView.separated(
-          itemCount: activites.length,
-          controller: _controller,
-          itemBuilder: (context, index){
-            Activite activite = activites[index];
-
-            return Dismissible(
-                key: Key(activite.nom),
-                child: ListTile(
-                  title: Text("Activité:"),
-                  subtitle: Text(activite.nom),
-                  trailing: Icon(activite.icone),
-                  leading: Icon(activite.icone),
-                  onTap: (){
-                    print(activite.nom);
-                  },
-                ),
-              onDismissed: (direction){
-                  print(direction.toString());
-                  setState(() {
-                    activites.removeAt(index);
-                  });
-              },
-              confirmDismiss:(direction) async{
-                  return await false;
-              },
-              background: Container(
-                color: Colors.red,
-                padding: EdgeInsets.only(right: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text("Supprimer", style: TextStyle(color: Colors.white),),
-                    Icon(Icons.delete, color: Colors.white,)
-                  ],
-                ),
-              ),
-              secondaryBackground: Container(color: Colors.green,),
-            );
-
-          },
-          separatorBuilder: (context, index){
-            if(index % 5 == 0){
-              return Divider(color: Colors.red,);
-            }
-            return Container();
-
-          },
-        )
+        body: bodynamic()
     );
   }
 
+
+  Widget bodynamic(){
+    return GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+        itemCount: activites.length,
+        itemBuilder: (context, index){
+
+        }
+    );
+
+    return ListView.separated(
+      itemCount: activites.length,
+      controller: _controller,
+      itemBuilder: (context, index){
+        Activite activite = activites[index];
+
+        return Dismissible(
+          key: Key(activite.nom),
+          child: ListTile(
+            title: Text("Activité:"),
+            subtitle: Text(activite.nom),
+            trailing: Icon(activite.icone),
+            leading: Icon(activite.icone),
+            onTap: (){
+              print(activite.nom);
+            },
+          ),
+          onDismissed: (direction){
+            print(direction.toString());
+            setState(() {
+              activites.removeAt(index);
+            });
+          },
+          confirmDismiss:(direction) async{
+            return await false;
+          },
+          background: Container(
+            color: Colors.red,
+            padding: EdgeInsets.only(right: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text("Supprimer", style: TextStyle(color: Colors.white),),
+                Icon(Icons.delete, color: Colors.white,)
+              ],
+            ),
+          ),
+          secondaryBackground: Container(color: Colors.green,),
+        );
+
+      },
+      separatorBuilder: (context, index){
+        if(index % 5 == 0){
+          return Divider(color: Colors.red,);
+        }
+        return Container();
+
+      },
+    );
+  }
 }
