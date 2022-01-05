@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scroll/pages/page_single_child_scroll.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: PageSingleChildScroll()
     );
   }
 }
