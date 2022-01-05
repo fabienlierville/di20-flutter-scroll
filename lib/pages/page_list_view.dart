@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scroll/models/activite.dart';
 
 class PageListView extends StatelessWidget {
-  const PageListView({Key? key}) : super(key: key);
+  PageListView({Key? key}) : super(key: key);
 
   List<Activite> activites = [
     Activite(nom: "Vélo", icone: Icons.directions_bike),
