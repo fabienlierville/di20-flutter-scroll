@@ -57,6 +57,9 @@ class _PageListTileState extends State<PageListTile> {
               subtitle: Text(activites[index].nom),
               trailing: Icon(activites[index].icone),
               leading: Icon(activites[index].icone),
+              onTap: (){
+                print(activites[index].nom);
+              },
             );
           },
         )
