@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class PageSingleChildScroll extends StatelessWidget {
-  const PageSingleChildScroll({Key? key}) : super(key: key);
+class PageListView extends StatelessWidget {
+  const PageListView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Single Child ScrollView"),
+        title: Text("ListView"),
       ),
       body: SingleChildScrollView(
         child: Column(
