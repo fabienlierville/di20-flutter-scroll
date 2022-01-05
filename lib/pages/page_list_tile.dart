@@ -9,6 +9,7 @@ class PageListTile extends StatefulWidget {
 }
 
 class _PageListTileState extends State<PageListTile> {
+  ScrollController _controller = ScrollController();
 
   List<Activite> activites = [
     Activite(nom: "Vélo", icone: Icons.directions_bike),
@@ -44,6 +45,14 @@ class _PageListTileState extends State<PageListTile> {
   ];
 
   @override
+  void initState() {
+    _controller.addListener(() {
+      print("Postiion = ${_controller.position.pixels} | Max = ${_controller.position.maxScrollExtent}");
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -51,6 +60,7 @@ class _PageListTileState extends State<PageListTile> {
         ),
         body: ListView.builder(
           itemCount: activites.length,
+          controller: _controller,
           itemBuilder: (context, index){
             return ListTile(
               title: Text("Activité:"),
