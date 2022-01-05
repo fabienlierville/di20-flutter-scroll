@@ -78,6 +78,23 @@ class _PageDismissState extends State<PageDismiss> {
                     print(activite.nom);
                   },
                 ),
+              onDismissed: (direction){
+                  print(direction.toString());
+                  setState(() {
+                    activites.removeAt(index);
+                  });
+              },
+              background: Container(
+                color: Colors.red,
+                padding: EdgeInsets.only(right: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text("Supprimer", style: TextStyle(color: Colors.white),),
+                    Icon(Icons.delete, color: Colors.white,)
+                  ],
+                ),
+              ),
             );
 
           },
