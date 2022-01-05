@@ -1,7 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:scroll/models/activite.dart';
 
 class PageListView extends StatelessWidget {
   const PageListView({Key? key}) : super(key: key);
+
+  List<Activite> activites = [
+    Activite(nom: "Vélo", icone: Icons.directions_bike),
+    Activite(nom: "Peinture", icone: Icons.palette),
+    Activite(nom: "Golf", icone: Icons.golf_course),
+    Activite(nom: "Arcade", icone: Icons.gamepad),
+    Activite(nom: "Bricolage", icone: Icons.build),
+    Activite(nom: "Vélo", icone: Icons.directions_bike),
+    Activite(nom: "Peinture", icone: Icons.palette),
+    Activite(nom: "Golf", icone: Icons.golf_course),
+    Activite(nom: "Arcade", icone: Icons.gamepad),
+    Activite(nom: "Bricolage", icone: Icons.build),
+    Activite(nom: "Vélo", icone: Icons.directions_bike),
+    Activite(nom: "Peinture", icone: Icons.palette),
+    Activite(nom: "Golf", icone: Icons.golf_course),
+    Activite(nom: "Arcade", icone: Icons.gamepad),
+    Activite(nom: "Bricolage", icone: Icons.build),
+    Activite(nom: "Vélo", icone: Icons.directions_bike),
+    Activite(nom: "Peinture", icone: Icons.palette),
+    Activite(nom: "Golf", icone: Icons.golf_course),
+    Activite(nom: "Arcade", icone: Icons.gamepad),
+    Activite(nom: "Bricolage", icone: Icons.build),
+    Activite(nom: "Vélo", icone: Icons.directions_bike),
+    Activite(nom: "Peinture", icone: Icons.palette),
+    Activite(nom: "Golf", icone: Icons.golf_course),
+    Activite(nom: "Arcade", icone: Icons.gamepad),
+    Activite(nom: "Bricolage", icone: Icons.build),
+    Activite(nom: "Vélo", icone: Icons.directions_bike),
+    Activite(nom: "Peinture", icone: Icons.palette),
+    Activite(nom: "Golf", icone: Icons.golf_course),
+    Activite(nom: "Arcade", icone: Icons.gamepad),
+    Activite(nom: "Bricolage", icone: Icons.build),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -9,37 +43,9 @@ class PageListView extends StatelessWidget {
       appBar: AppBar(
         title: Text("ListView"),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(height: 100, color: Colors.red,),
-            Container(height: 100, color: Colors.yellow,),
-            Container(height: 100, color: Colors.blue,),
-            Container(height: 100, color: Colors.black,),
-            Container(height: 100, color: Colors.green,),
-            Container(height: 100, color: Colors.red,),
-            Container(height: 100, color: Colors.yellow,),
-            Container(height: 100, color: Colors.blue,),
-            Container(height: 100, color: Colors.black,),
-            Container(height: 100, color: Colors.green,),
-            Container(height: 100, color: Colors.red,),
-            Container(height: 100, color: Colors.yellow,),
-            Container(height: 100, color: Colors.blue,),
-            Container(height: 100, color: Colors.black,),
-            Container(height: 100, color: Colors.green,),
-            Container(height: 100, color: Colors.red,),
-            Container(height: 100, color: Colors.yellow,),
-            Container(height: 100, color: Colors.blue,),
-            Container(height: 100, color: Colors.black,),
-            Container(height: 100, color: Colors.green,),
-            Container(height: 100, color: Colors.red,),
-            Container(height: 100, color: Colors.yellow,),
-            Container(height: 100, color: Colors.blue,),
-            Container(height: 100, color: Colors.black,),
-            Container(height: 100, color: Colors.green,),
-          ],
-        ),
-      ),
+      body: ListView.builder(
+
+      )
     );
   }
 }
