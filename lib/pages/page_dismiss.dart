@@ -59,21 +59,27 @@ class _PageDismissState extends State<PageDismiss> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("List Tile"),
+          title: Text("List Tile Dismiss"),
         ),
         body: ListView.separated(
           itemCount: activites.length,
           controller: _controller,
           itemBuilder: (context, index){
-            return ListTile(
-              title: Text("Activité:"),
-              subtitle: Text(activites[index].nom),
-              trailing: Icon(activites[index].icone),
-              leading: Icon(activites[index].icone),
-              onTap: (){
-                print(activites[index].nom);
-              },
+            Activite activite = activites[index];
+
+            return Dismissible(
+                key: Key(activite.nom),
+                child: ListTile(
+                  title: Text("Activité:"),
+                  subtitle: Text(activite.nom),
+                  trailing: Icon(activite.icone),
+                  leading: Icon(activite.icone),
+                  onTap: (){
+                    print(activite.nom);
+                  },
+                ),
             );
+
           },
           separatorBuilder: (context, index){
             if(index % 5 == 0){
