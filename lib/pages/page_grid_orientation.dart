@@ -55,8 +55,12 @@ class _PageGridOrientationState extends State<PageGridOrientation> {
 
   }
 
+  Orientation? orientation;
+
   @override
   Widget build(BuildContext context) {
+    orientation = MediaQuery.of(context).orientation;
+
     return Scaffold(
         appBar: AppBar(
           title: Text("List Grid Orientation"),
@@ -67,70 +71,80 @@ class _PageGridOrientationState extends State<PageGridOrientation> {
 
 
   Widget bodynamic(){
-    return GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+    if(orientation == null || orientation == Orientation.landscape ){
+      return GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+          itemCount: activites.length,
+          itemBuilder: (context, index){
+            Activite activite = activites[index];
+            return Card(
+              elevation: 3.0,
+              child: InkWell(
+                onTap: (){
+                  print("Activite : ${activite.nom}");
+                },
+                child: GridTile(
+                  header: Text("Activité", textAlign: TextAlign.center,),
+                  child: Icon(activite.icone, size: 40,),
+                  footer: Text(activite.nom, textAlign: TextAlign.center, style: TextStyle(color: Colors.blue),),
+                ),
+              ) ,
+            ) ;
+          }
+      );
+    }else{
+      return ListView.separated(
         itemCount: activites.length,
+        controller: _controller,
         itemBuilder: (context, index){
           Activite activite = activites[index];
-          return Card(
-            elevation: 3.0,
-            child: GridTile(
-              header: Text("Activité", textAlign: TextAlign.center,),
-              child: Icon(activite.icone, size: 40,),
-              footer: Text(activite.nom, textAlign: TextAlign.center, style: TextStyle(color: Colors.blue),),
+
+          return Dismissible(
+            key: Key(activite.nom),
+            child: ListTile(
+              title: Text("Activité:"),
+              subtitle: Text(activite.nom),
+              trailing: Icon(activite.icone),
+              leading: Icon(activite.icone),
+              onTap: (){
+                print(activite.nom);
+              },
             ),
-          ) ;
-        }
-    );
-
-    return ListView.separated(
-      itemCount: activites.length,
-      controller: _controller,
-      itemBuilder: (context, index){
-        Activite activite = activites[index];
-
-        return Dismissible(
-          key: Key(activite.nom),
-          child: ListTile(
-            title: Text("Activité:"),
-            subtitle: Text(activite.nom),
-            trailing: Icon(activite.icone),
-            leading: Icon(activite.icone),
-            onTap: (){
-              print(activite.nom);
+            onDismissed: (direction){
+              print(direction.toString());
+              setState(() {
+                activites.removeAt(index);
+              });
             },
-          ),
-          onDismissed: (direction){
-            print(direction.toString());
-            setState(() {
-              activites.removeAt(index);
-            });
-          },
-          confirmDismiss:(direction) async{
-            return await false;
-          },
-          background: Container(
-            color: Colors.red,
-            padding: EdgeInsets.only(right: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text("Supprimer", style: TextStyle(color: Colors.white),),
-                Icon(Icons.delete, color: Colors.white,)
-              ],
+            confirmDismiss:(direction) async{
+              return await false;
+            },
+            background: Container(
+              color: Colors.red,
+              padding: EdgeInsets.only(right: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text("Supprimer", style: TextStyle(color: Colors.white),),
+                  Icon(Icons.delete, color: Colors.white,)
+                ],
+              ),
             ),
-          ),
-          secondaryBackground: Container(color: Colors.green,),
-        );
+            secondaryBackground: Container(color: Colors.green,),
+          );
 
-      },
-      separatorBuilder: (context, index){
-        if(index % 5 == 0){
-          return Divider(color: Colors.red,);
-        }
-        return Container();
+        },
+        separatorBuilder: (context, index){
+          if(index % 5 == 0){
+            return Divider(color: Colors.red,);
+          }
+          return Container();
 
-      },
-    );
+        },
+      );
+    }
+
+
+
   }
 }
