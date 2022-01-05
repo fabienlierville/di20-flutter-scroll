@@ -44,7 +44,15 @@ class PageListView extends StatelessWidget {
         title: Text("ListView"),
       ),
       body: ListView.builder(
-
+        itemCount: activites.length,
+        itemBuilder: (context, index){
+          return Row(
+            children: [
+              Container(height: 50, child: Text("Activité : ${activites[index].nom}"),),
+              Container(height: 50, child: Icon(activites[index].icone),),
+            ],
+          );
+        },
       )
     );
   }
