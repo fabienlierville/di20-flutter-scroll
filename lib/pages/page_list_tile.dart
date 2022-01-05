@@ -61,7 +61,7 @@ class _PageListTileState extends State<PageListTile> {
         appBar: AppBar(
           title: Text("List Tile"),
         ),
-        body: ListView.builder(
+        body: ListView.separated(
           itemCount: activites.length,
           controller: _controller,
           itemBuilder: (context, index){
@@ -74,6 +74,13 @@ class _PageListTileState extends State<PageListTile> {
                 print(activites[index].nom);
               },
             );
+          },
+          separatorBuilder: (context, index){
+            if(index % 5 == 0){
+              return Divider(color: Colors.red,);
+            }
+            return Container();
+
           },
         )
     );
