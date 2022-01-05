@@ -83,10 +83,13 @@ class _PageGridOrientationState extends State<PageGridOrientation> {
                 onTap: (){
                   print("Activite : ${activite.nom}");
                 },
-                child: GridTile(
-                  header: Text("Activité", textAlign: TextAlign.center,),
-                  child: Icon(activite.icone, size: 40,),
-                  footer: Text(activite.nom, textAlign: TextAlign.center, style: TextStyle(color: Colors.blue),),
+                child: Dismissible(
+                  key: Key(activite.nom),
+                  child: GridTile(
+                    header: Text("Activité", textAlign: TextAlign.center,),
+                    child: Icon(activite.icone, size: 40,),
+                    footer: Text(activite.nom, textAlign: TextAlign.center, style: TextStyle(color: Colors.blue),),
+                  ),
                 ),
               ) ,
             ) ;
@@ -115,9 +118,6 @@ class _PageGridOrientationState extends State<PageGridOrientation> {
               setState(() {
                 activites.removeAt(index);
               });
-            },
-            confirmDismiss:(direction) async{
-              return await false;
             },
             background: Container(
               color: Colors.red,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:scroll/pages/page_dismiss.dart';
 import 'package:scroll/pages/page_grid_orientation.dart';
 import 'package:scroll/pages/page_list_tile.dart';
@@ -6,6 +7,10 @@ import 'package:scroll/pages/page_list_view.dart';
 import 'package:scroll/pages/page_single_child_scroll.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp
+  ]);
   runApp(const MyApp());
 }
 
