@@ -71,7 +71,12 @@ class _PageGridOrientationState extends State<PageGridOrientation> {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
         itemCount: activites.length,
         itemBuilder: (context, index){
-
+          Activite activite = activites[index];
+          return GridTile(
+            header: Text("Activité", textAlign: TextAlign.center,),
+            child: Icon(activite.icone, size: 40,),
+            footer: Text(activite.nom, textAlign: TextAlign.center, style: TextStyle(color: Colors.blue),),
+          );
         }
     );
 
