@@ -46,10 +46,13 @@ class _PageListTileState extends State<PageListTile> {
 
   @override
   void initState() {
-    _controller.addListener(() {
-      print("Postiion = ${_controller.position.pixels} | Max = ${_controller.position.maxScrollExtent}");
-    });
+    _controller.addListener(listener);
     super.initState();
+  }
+
+  void listener(){
+    print("Postiion = ${_controller.position.pixels} | Max = ${_controller.position.maxScrollExtent}");
+
   }
 
   @override
