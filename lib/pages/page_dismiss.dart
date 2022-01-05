@@ -84,6 +84,9 @@ class _PageDismissState extends State<PageDismiss> {
                     activites.removeAt(index);
                   });
               },
+              confirmDismiss:(direction) async{
+                  return await false;
+              },
               background: Container(
                 color: Colors.red,
                 padding: EdgeInsets.only(right: 20),
@@ -95,6 +98,7 @@ class _PageDismissState extends State<PageDismiss> {
                   ],
                 ),
               ),
+              secondaryBackground: Container(color: Colors.green,),
             );
 
           },
